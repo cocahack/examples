@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    function:
+      definition: streamUserConsumer
+    stream:
+      kafka:
+        binder:
+          brokers: PLAINTEXT://localhost:51211
+        bindings:
+          input.consumer:
+            enableDlq: true
+            dlqName: test.dlt
+            dlqProducerProperties:
+              configuration:
+                value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+      function:
+        bindings:
+          streamUserConsumer-in-0: input
+      bindings:
+        input:
+          destination: test
+          group: dlq-test-consumer
+          consumer:
+            concurrency: 1
+
+

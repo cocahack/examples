@@ -1,0 +1,4 @@
+dlq:
+  kafka:
+    bootstrap-addresses: localhost:51211
+    topic-name: test.dlt
