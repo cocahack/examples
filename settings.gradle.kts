@@ -14,3 +14,5 @@ rootProject.name = "examples"
 include("kafka-dlq")
 include("kafka-dlq:consumer")
 include("kafka-dlq:dlq-consumer")
+
+include("teliitt")
