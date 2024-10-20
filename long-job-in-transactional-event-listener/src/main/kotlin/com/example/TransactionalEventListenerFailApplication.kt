@@ -1,14 +1,14 @@
-package com.example.teliitt
+package com.example
 
 import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
 
 @SpringBootApplication
-class TELIITTApplication
+class TransactionalEventListenerFailApplication
 
 fun main(args: Array<String>) {
-    SpringApplicationBuilder(TELIITTApplication::class.java)
+    SpringApplicationBuilder(TransactionalEventListenerFailApplication::class.java)
         .web(WebApplicationType.SERVLET)
         .profiles("local")
         .run(*args)

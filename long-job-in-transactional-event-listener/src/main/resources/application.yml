@@ -16,7 +16,8 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-      driver-class-name: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+    hikari:
       auto-commit: false
       connection-timeout: 3000
       max-lifetime: 50000
@@ -29,15 +30,15 @@ spring:
 spring:
   config.activate.on-profile: local
   datasource:
-      jdbc-url: jdbc:postgresql://localhost:5532/test
-      username: user
-      password: 1234
-      maximum-pool-size: 10
+    url: jdbc:postgresql://localhost:5532/test
+    username: user
+    password: 1234
   jpa:
     show-sql: true
+
   flyway:
     enabled: true
     baseline-version: 0
     locations:
       - classpath:db/migration
-      - classpath:db/data
+#      - classpath:db/data

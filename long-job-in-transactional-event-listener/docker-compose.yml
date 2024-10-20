@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  postgres-test1:
+    image: postgres:16-alpine
+    privileged: true
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5532:5432"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d  # Mount folder for initialization scripts
+    entrypoint: >
+      bash -c '
+      echo "Initializing PostgreSQL...";
+      echo "ALTER DATABASE test SET idle_in_transaction_session_timeout = '\''3s'\'';" > /docker-entrypoint-initdb.d/01-alter-db.sql;
+      exec docker-entrypoint.sh postgres -c log_statement=all -c tcp_keepalives_idle=55;
+      '

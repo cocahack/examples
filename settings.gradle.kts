@@ -11,8 +11,10 @@ plugins {
 
 rootProject.name = "examples"
 
+include("common")
+
 include("kafka-dlq")
 include("kafka-dlq:consumer")
 include("kafka-dlq:dlq-consumer")
 
-include("teliitt")
+include("long-job-in-transactional-event-listener")
